@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using BankAccountNS;
 
 namespace BankAccountTest
 {
@@ -10,9 +11,17 @@ namespace BankAccountTest
         }
 
         [Test]
-        public void Test1()
+        public void Debit_WithValidAmount_UpdatesBalance()
         {
-            Assert.Pass();
+            double beginingBalance = 11.99;
+            double debitAmount = 4.55;
+            double expected = 7.44;
+            BankAccount account = new BankAccount("Mr Banan", beginingBalance);
+
+            account.Debit(debitAmount);
+
+            double actual = account.Balance;
+            Assert.AreEqual(expected, actual);
         }
     }
 }
