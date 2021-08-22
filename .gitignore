@@ -1,1 +1,4 @@
-BankAccount/obj*
+BankAccount/obj/*
+BamkAccount/bin/*
+BankAccountTest/obj/*
+BamkAccountTest/bin/*
