@@ -17,9 +17,9 @@ namespace BankAccountTest
             double beginingBalance = 11.99;
             double debitAmount = 4.55;
             double expected = 7.44;
-            BankAccount account = new BankAccount("Mr Banan", beginingBalance);
+            BankAccount account = new BankAccount(beginingBalance);
 
-            account.Debit(debitAmount);
+            account.Withdraw(debitAmount);
 
             double actual = account.Balance;
             Assert.AreEqual(expected, actual);
@@ -32,9 +32,9 @@ namespace BankAccountTest
         {
             double beginingBalance = 11.99;
             double debitAmount = -100;
-            BankAccount account = new BankAccount("Mr Banan", beginingBalance);
+            BankAccount account = new BankAccount(beginingBalance);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => account.Debit(debitAmount));
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(debitAmount));
         }
 
 

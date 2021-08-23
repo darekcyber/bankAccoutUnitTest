@@ -2,67 +2,59 @@
 
 namespace BankAccountNS
 {
-    /// <summary>
-    /// Bank account demo class.
-    /// </summary>
     public class BankAccount
     {
-        private readonly string m_customerName;
-        private double m_balance;
+        private double balance;
 
-        private BankAccount() { }
-
-        public BankAccount(string customerName, double balance)
+        public BankAccount()
         {
-            m_customerName = customerName;
-            m_balance = balance;
         }
 
-        public string CustomerName
+        public BankAccount(double balance)
         {
-            get { return m_customerName; }
+            this.balance = balance;
         }
-
-
         public double Balance
         {
-            get { return m_balance; }
+            get { return balance; }
         }
 
-        public void Debit(double amount)
+        public void add(double amount)
         {
-
-
-            if (amount > m_balance)
+            if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException(nameof(amount));
+            }
+        }
+
+        public void Withdraw(double amount)
+        {
+            if (amount > balance)
+            {
+                throw new ArgumentOutOfRangeException(nameof(amount));
             }
 
             if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException(nameof(amount));
             }
 
-            m_balance -= amount; // intentionally incorrect code
+            balance -= amount;
         }
 
-        public void Credit(double amount)
+        public void TransferFoundsTo(BankAccount otherAccount, double amount)
         {
-            if (amount < 0)
+            if (otherAccount is null)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentNullException(nameof(otherAccount));
             }
-
-            m_balance += amount;
         }
 
         public static void Main()
         {
-            BankAccount ba = new BankAccount("Mr. Bryan Walton", 11.99);
 
-            ba.Credit(5.77);
-            ba.Debit(11.22);
-            Console.WriteLine("Current balance is ${0}", ba.Balance);
         }
+        
     }
 }
+
