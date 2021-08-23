@@ -12,29 +12,18 @@ namespace BankAccountTest
         }
 
         [Test]
-        public void Debit_WithValidAmount_UpdatesBalance()
+        public void Deposit_ValidAmount_UpdateBalance()
         {
-            double beginingBalance = 11.99;
-            double debitAmount = 4.55;
-            double expected = 7.44;
-            BankAccount account = new BankAccount(beginingBalance);
+            double currentBalance = 11.45;
+            double depositValue = 6.25;
+            double expectedBalance = 17.70;
+            BankAccount account = new BankAccount(currentBalance);
 
-            account.Withdraw(debitAmount);
+            account.Deposit(depositValue);
 
-            double actual = account.Balance;
-            Assert.AreEqual(expected, actual);
-        }
+            Assert.AreEqual(account.Balance, expectedBalance);
 
-        
 
-        [Test]
-        public void Debit_WhenAmmountIsLessThenZero_ShouldThrowArgumentOutOfRange()
-        {
-            double beginingBalance = 11.99;
-            double debitAmount = -100;
-            BankAccount account = new BankAccount(beginingBalance);
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(debitAmount));
         }
 
 

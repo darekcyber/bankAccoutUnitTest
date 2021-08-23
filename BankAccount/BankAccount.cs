@@ -19,12 +19,14 @@ namespace BankAccountNS
             get { return balance; }
         }
 
-        public void add(double amount)
+        public void Deposit(double amount)
         {
             if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(amount));
             }
+
+            balance += amount;
         }
 
         public void Withdraw(double amount)
@@ -42,7 +44,7 @@ namespace BankAccountNS
             balance -= amount;
         }
 
-        public void TransferFoundsTo(BankAccount otherAccount, double amount)
+        public void Transfer(BankAccount otherAccount, double amount)
         {
             if (otherAccount is null)
             {
