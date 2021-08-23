@@ -23,6 +23,7 @@ namespace BankAccountNS
             get { return m_customerName; }
         }
 
+
         public double Balance
         {
             get { return m_balance; }
@@ -30,6 +31,8 @@ namespace BankAccountNS
 
         public void Debit(double amount)
         {
+
+
             if (amount > m_balance)
             {
                 throw new ArgumentOutOfRangeException("amount");

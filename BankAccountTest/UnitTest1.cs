@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using BankAccountNS;
+using System;
 
 namespace BankAccountTest
 {
@@ -23,5 +24,19 @@ namespace BankAccountTest
             double actual = account.Balance;
             Assert.AreEqual(expected, actual);
         }
+
+        
+
+        [Test]
+        public void Debit_WhenAmmountIsLessThenZero_ShouldThrowArgumentOutOfRange()
+        {
+            double beginingBalance = 11.99;
+            double debitAmount = -100;
+            BankAccount account = new BankAccount("Mr Banan", beginingBalance);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.Debit(debitAmount));
+        }
+
+
     }
 }
