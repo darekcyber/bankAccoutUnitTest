@@ -87,5 +87,16 @@ namespace BankAccountTest
             Assert.AreEqual(expectedBalance1, account1.Balance, 0.01);
             Assert.AreEqual(expectedBalance2, account2.Balance, 0.01);
         }
+
+        [Test]
+        
+        public void Transfer_toNonExistingAccount_Throws()
+        {
+            BankAccount account = new BankAccount();
+            
+            Assert.Throws<ArgumentNullException>(() => account.Transfer(null, 10));
+        }
+
+
     }
 }
