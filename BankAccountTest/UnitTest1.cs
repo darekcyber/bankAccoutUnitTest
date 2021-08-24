@@ -58,5 +58,16 @@ namespace BankAccountTest
 
             Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(withdrawValue));
         }
+
+        [Test]
+        public void Withdraw_MoreWithdrawValueThenBalance_Throws()
+        {
+            double currentBalance = 11.45;
+            double withdrawValue = 100;
+
+            BankAccount account = new BankAccount(currentBalance);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(withdrawValue));
+        }
     }
 }
