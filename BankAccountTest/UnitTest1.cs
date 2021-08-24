@@ -48,6 +48,15 @@ namespace BankAccountTest
             Assert.AreEqual(expectedBalance, account.Balance, 0.01);
         }
 
+        [Test]
+        public void Withdraw_NegativeAmount_Throws()
+        {
+            double currentBalance = 11.45;
+            double withdrawValue = -100;
 
+            BankAccount account = new BankAccount(currentBalance);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(withdrawValue));
+        }
     }
 }
