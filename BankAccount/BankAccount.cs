@@ -50,6 +50,9 @@ namespace BankAccountNS
             {
                 throw new ArgumentNullException(nameof(otherAccount));
             }
+
+            Withdraw(amount);
+            otherAccount.Deposit(amount);
         }
 
         public static void Main()

@@ -69,5 +69,23 @@ namespace BankAccountTest
 
             Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(withdrawValue));
         }
+
+        [Test]
+        public void Transfer_ValidAmountMoney_UpdateBothAccounts()
+        {
+            double currentBalanceAccount1 = 11.45;
+            double currentBalanceAccount2 = 10.45;
+            double tranferValue = 10.1;
+            double expectedBalance1 = 1.35;
+            double expectedBalance2 = 20.55;
+
+            BankAccount account1 = new BankAccount(currentBalanceAccount1);
+            BankAccount account2 = new BankAccount(currentBalanceAccount2);
+
+            account1.Transfer(account2, tranferValue);
+
+            Assert.AreEqual(expectedBalance1, account1.Balance, 0.01);
+            Assert.AreEqual(expectedBalance2, account2.Balance, 0.01);
+        }
     }
 }
